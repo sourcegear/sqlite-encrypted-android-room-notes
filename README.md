@@ -25,8 +25,10 @@ This example uses SQLite SEE. It does not use SQLCipher.
 - Android Studio or a command-line Android SDK.
 - Android API 23 or newer.
 - Access to `https://packages.sourcegear.com/maven/releases`.
-- A licensed SEE activation key. To try the sample before purchasing a license,
-  [request an evaluation key](http://sqlite.sourcegear.com/#evaluation).
+- A licensed SEE activation key.
+
+Free fully-featured demo keys are available from
+[sqlite.sourcegear.com](https://sqlite.sourcegear.com/#evaluation).
 
 ## Install the package
 
