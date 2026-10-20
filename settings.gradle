@@ -1,0 +1,21 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url = uri('https://packages.sourcegear.com/maven/releases')
+        }
+    }
+}
+
+rootProject.name = 'sqlite-encrypted-room-notes-example'
+include ':app'

@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.application'
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.isFile()) {
+    localPropertiesFile.withInputStream { localProperties.load(it) }
+}
+
+def seeActivationKey = providers.gradleProperty('seeActivationKey')
+        .orElse(providers.environmentVariable('SQLITE_ENCRYPTED_ACTIVATION_KEY'))
+        .orElse(localProperties.getProperty(
+                'seeActivationKey', 'replace-with-your-see-activation-key'))
+        .get()
+
+android {
+    namespace 'org.sqlite.encrypted.examples.roomnotes'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'org.sqlite.encrypted.examples.roomnotes'
+        minSdk 23
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+
+        buildConfigField 'String', 'SQLITE_ENCRYPTED_ACTIVATION_KEY',
+                '"' + seeActivationKey + '"'
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'org.sqlite.encrypted:sqlite3:3.54.0'
+
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.room:room-runtime:2.8.4'
+    annotationProcessor 'androidx.room:room-compiler:2.8.4'
+}
